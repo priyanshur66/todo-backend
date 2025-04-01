@@ -18,6 +18,8 @@ const envVarsSchema = Joi.object()
       .required()
       .description('PostgreSQL database name'),
     PG_PORT: Joi.number().default(5432).description('PostgreSQL port'),
+    JWT_SECRET: Joi.string().required().description('JWT secret key'),
+    JWT_EXPIRATION: Joi.string().default('1d').description('JWT expiration time'),
   })
   .unknown();
 
@@ -39,6 +41,10 @@ const config: AppConfig = {
     database: envVars.PG_DATABASE,
     port: Number(envVars.PG_PORT),
   },
+  jwt: {
+    secret: envVars.JWT_SECRET,
+    expiresIn: envVars.JWT_EXPIRATION,
+  }
   
 };
 

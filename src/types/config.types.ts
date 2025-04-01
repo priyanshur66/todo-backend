@@ -6,10 +6,17 @@ export interface PostgresConfig {
     port: number;
   }
   
-  
+
+
   export interface AppConfig {
     env: string;
     port: number;
     pg: PostgresConfig;
+    jwt: JwtConfig;
     
+  }
+
+  export interface JwtConfig {
+    secret: string;
+    expiresIn: string;
   }
